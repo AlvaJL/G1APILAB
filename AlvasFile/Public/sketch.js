@@ -1,25 +1,27 @@
 getData();
 
 async function getData(){
-  const res = await fetch('/api/Plants', options);
+  const res = await fetch('/api/Plants');
   const myData = await res.json();
   console.log(myData);
-  const options ={
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(myData)
-  }
-  showDataOnPage(myData);
+
+  showDataOnPage(myData)
+
 }
 
 function showDataOnPage(data){
-  console.log(data);
   const dataDiv= document.getElementById("showData");
-  dataDiv.innerHTML= data;
+  for (const plant of data.data) {
+    console.log(plant.common_name);
+    const plantDiv = document.createElement("div").appendChild(document.createTextNode(plant.common_name));
+    dataDiv.appendChild(plantDiv);
+  }
+
+
+ // dataDiv.innerHTML= data.data[0].common_name;
 
 }
+
 
 /*const data = {
   status: 'success',

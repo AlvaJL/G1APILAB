@@ -13,7 +13,6 @@ app.post('/api', (request, response)=> {
 });
 
 
-
 app.get('/api/Plants', (request,response)=>{
   fetch('https://trefle.io/api/v1/species?range%5Bmaximum_height_cm%5D=5%2C20&token=tPkth5TH6pRDS6z3Ug7wb3JPeH-veqxTjiRiYnZwDeY')
   .then(res => res.json())
